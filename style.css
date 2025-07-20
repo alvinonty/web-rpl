@@ -123,3 +123,44 @@ footer {
   color: #94a3b8;
   border-top: 1px solid #334155;
 }
+
+/* Statistik RPL */
+.statistik h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #38bdf8;
+  text-shadow: 0 0 5px #0ea5e9;
+}
+
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px;
+  padding: 10px;
+}
+
+.stat-card {
+  background-color: #0f172a;
+  border: 2px solid #38bdf8;
+  padding: 20px;
+  text-align: center;
+  border-radius: 12px;
+  box-shadow: 0 0 10px #0ea5e9;
+  transition: transform 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: scale(1.05);
+}
+
+.stat-card h3 {
+  font-size: 2.5em;
+  margin: 0;
+  color: #38bdf8;
+}
+
+.stat-card p {
+  margin-top: 10px;
+  color: #cbd5e1;
+  font-weight: bold;
+}
