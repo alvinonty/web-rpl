@@ -152,5 +152,31 @@
   <footer>
     <p>&copy; 2025 RPL - SMKN 1 Kertosono. All rights reserved.</p>
   </footer>
+  <script>
+  document.getElementById("formAdmin").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const nama = document.getElementById("nama").value;
+    const bio = document.getElementById("bio").value;
+    const foto = document.getElementById("foto").files[0];
+
+    const reader = new FileReader();
+    reader.onload = function () {
+      const card = document.createElement("div");
+      card.className = "card";
+      card.innerHTML = `
+        <img src="${reader.result}" alt="${nama}">
+        <h3>${nama}</h3>
+        <p>${bio}</p>
+      `;
+      document.getElementById("listSiswa").appendChild(card);
+
+      // reset form
+      document.getElementById("formAdmin").reset();
+    };
+    reader.readAsDataURL(foto);
+  });
+</script>
+
 </body>
 </html>
