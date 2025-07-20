@@ -262,3 +262,37 @@ footer {
   flex-wrap: wrap;
   gap: 20px;
 }
+
+#quiz-container {
+  background: rgba(255,255,255,0.1);
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  text-align: center;
+}
+
+#quiz-container button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background: #03a9f4;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.option-btn {
+  display: block;
+  margin: 10px auto;
+  padding: 10px;
+  background: #fff;
+  border: 2px solid #03a9f4;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.option-btn:hover {
+  background-color: #03a9f4;
+  color: white;
+}
+
