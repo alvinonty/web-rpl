@@ -1,11 +1,24 @@
 <!DOCTYPE html>
-<html lang="id">
+<html>
 <head>
+  <title>Biodata Siswa RPL</title>
+</head>
+<body>
+  <h2>Daftar Siswa Aktif</h2>
+  <?php
+  $query = mysqli_query($conn, "SELECT * FROM siswa");
+  while ($data = mysqli_fetch_assoc($query)) {
+    echo "<div>
+      <h3>{$data['nama']} ({$data['kelas']})</h3>
+      <p>{$data['bio']}</p>
+    </div><hr>";
+  }
+  ?>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>SMK Negeri 1 Kertosono - RPL 1</title>
   <link rel="stylesheet" href="style.css" />
-</head>
+  <head>
 <body>
   <header>
     <h1>RPL - SMK Negeri 1 Kertosono </h1>
