@@ -152,31 +152,88 @@
   <footer>
     <p>&copy; 2025 RPL - SMKN 1 Kertosono. All rights reserved.</p>
   </footer>
+<section id="quiz" class="section">
+  <h2>Kuis Tentang RPL</h2>
+  <div id="quiz-container">
+    <div id="question">Memuat pertanyaan...</div>
+    <div id="options"></div>
+    <button onclick="nextQuestion()">Selanjutnya</button>
+    <div id="score"></div>
+  </div>
+</section>
+
   <script>
-  document.getElementById("formAdmin").addEventListener("submit", function (e) {
-    e.preventDefault();
+  const questions = [
+    {
+      question: "Apa kepanjangan dari RPL?",
+      options: ["Rekayasa Perangkat Lunak", "Rekayasa Pemrograman Lanjut", "Rencana Program Linux"],
+      answer: "Rekayasa Perangkat Lunak"
+    },
+    {
+      question: "Bahasa pemrograman populer di RPL adalah?",
+      options: ["HTML", "Python", "Bahasa Indonesia"],
+      answer: "Python"
+    },
+    {
+      question: "Software untuk desain UI/UX?",
+      options: ["Figma", "Excel", "Word"],
+      answer: "Figma"
+    },
+    {
+      question: "Apa fungsi GitHub?",
+      options: ["Hosting code", "Desain grafis", "Main game"],
+      answer: "Hosting code"
+    }
+  ];
 
-    const nama = document.getElementById("nama").value;
-    const bio = document.getElementById("bio").value;
-    const foto = document.getElementById("foto").files[0];
+  let currentQuestion = 0;
+  let score = 0;
 
-    const reader = new FileReader();
-    reader.onload = function () {
-      const card = document.createElement("div");
-      card.className = "card";
-      card.innerHTML = `
-        <img src="${reader.result}" alt="${nama}">
-        <h3>${nama}</h3>
-        <p>${bio}</p>
+  function showQuestion() {
+    const q = questions[currentQuestion];
+    document.getElementById("question").textContent = q.question;
+
+    const optionsDiv = document.getElementById("options");
+    optionsDiv.innerHTML = "";
+
+    q.options.forEach(option => {
+      const btn = document.createElement("button");
+      btn.textContent = option;
+      btn.className = "option-btn";
+      btn.onclick = () => checkAnswer(option);
+      optionsDiv.appendChild(btn);
+    });
+  }
+
+  function checkAnswer(selected) {
+    const correct = questions[currentQuestion].answer;
+    if (selected === correct) {
+      score++;
+      alert("Benar!");
+    } else {
+      alert("Salah! Jawaban yang benar: " + correct);
+    }
+
+    document.querySelectorAll(".option-btn").forEach(btn => {
+      btn.disabled = true;
+    });
+  }
+
+  function nextQuestion() {
+    currentQuestion++;
+    if (currentQuestion < questions.length) {
+      showQuestion();
+    } else {
+      document.getElementById("quiz-container").innerHTML = `
+        <h3>Skor kamu: ${score}/${questions.length}</h3>
       `;
-      document.getElementById("listSiswa").appendChild(card);
+    }
+  }
 
-      // reset form
-      document.getElementById("formAdmin").reset();
-    };
-    reader.readAsDataURL(foto);
-  });
+  // Tampilkan pertanyaan pertama
+  showQuestion();
 </script>
+
 
 </body>
 </html>
